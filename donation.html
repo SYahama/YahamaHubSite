@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Me :P</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: white;
+        }
+
+        h1 {
+            font-size: 60px;
+            text-shadow: 0 0 20px red;
+        }
+
+        .ball-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .ball {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .ball:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px white;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .address {
+            margin-top: 20px;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .address.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Donate Me :P</h1>
+    <div class="ball-container">
+        <div class="ball" style="background-image: url('https://cryptologos.cc/logos/bitcoin-btc-logo.png');" onclick="showAddress('btc')"></div>
+        <div class="ball" style="background-image: url('https://cryptologos.cc/logos/ethereum-eth-logo.png');" onclick="showAddress('eth')"></div>
+        <div class="ball" style="background-image: url('https://cryptologos.cc/logos/litecoin-ltc-logo.png');" onclick="showAddress('ltc')"></div>
+        <div class="ball" style="background-image: url('https://cryptologos.cc/logos/solana-sol-logo.png');" onclick="showAddress('sol')"></div>
+    </div>
+    <div id="address" class="address"></div>
+
+    <script>
+        function showAddress(crypto) {
+            const addressBox = document.getElementById('address');
+            let address = '';
+            switch (crypto) {
+                case 'btc': address = 'Bitcoin Address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'; break;
+                case 'eth': address = 'Ethereum Address: 0x32Be343B94f860124dC4fEe278FDCBD38C102D88'; break;
+                case 'ltc': address = 'Litecoin Address: LZfJ6fJ1vPpCxyg9ejT6rjZmQY3jdwQ54X'; break;
+                case 'sol': address = 'Solana Address: 4Nd1mArj7m6aV2cFecgfqTfRBJ9DqdpZcsU5wMe5cqJ3'; break;
+            }
+            addressBox.innerHTML = address;
+            addressBox.classList.add('show');
+        }
+    </script>
+</body>
+</html>
