@@ -13,10 +13,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-y: auto; /* Make the page scrollable */
             color: white;
+            padding-bottom: 20px; /* Give space at the bottom for scrolling */
         }
 
         h1 {
@@ -67,6 +68,71 @@
             display: block;
             opacity: 1;
         }
+
+        /* Donation Goal Bar */
+        .donation-goal-container {
+            margin-top: 40px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .donation-goal-bar {
+            width: 100%;
+            height: 20px;
+            background-color: gray;
+            margin: 10px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .donation-progress {
+            height: 100%;
+            width: 0%; /* This will be dynamically updated */
+            background-color: green;
+            transition: width 0.5s ease;
+        }
+
+        .donation-goal-text {
+            font-size: 16px;
+            color: white;
+        }
+
+        /* Donation Leaderboard */
+        .leaderboard-container {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .leaderboard-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .leaderboard-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .leaderboard-item {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .leaderboard-item span {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -78,6 +144,24 @@
         <div class="ball" style="background-image: url('https://cryptologos.cc/logos/solana-sol-logo.png');" onclick="showAddress('sol')"></div>
     </div>
     <div id="address" class="address"></div>
+
+    <!-- Donation Goal Bar and Text -->
+    <div class="donation-goal-container">
+        <div class="donation-goal-bar">
+            <div id="donation-progress" class="donation-progress"></div>
+        </div>
+        <div id="donation-text" class="donation-goal-text">$0 / $100</div>
+    </div>
+
+    <!-- Donation Leaderboard -->
+    <div class="leaderboard-container">
+        <div class="leaderboard-title">Donation Leaderboard</div>
+        <div class="leaderboard-list">
+            <div class="leaderboard-item"><span>1.</span> ??? - $0</div>
+            <div class="leaderboard-item"><span>2.</span> ??? - $0</div>
+            <div class="leaderboard-item"><span>3.</span> ??? - $0</div>
+        </div>
+    </div>
 
     <script>
         function showAddress(crypto) {
@@ -92,6 +176,23 @@
             addressBox.innerHTML = address;
             addressBox.classList.add('show');
         }
+
+        // This function will update the donation progress
+        function updateDonationProgress(donationAmount) {
+            const goalAmount = 100;
+            const percentage = Math.min(donationAmount / goalAmount * 100, 100); // Make sure it's capped at 100%
+
+            // Update the progress bar width
+            const progressBar = document.getElementById('donation-progress');
+            progressBar.style.width = percentage + '%';
+
+            // Update the donation text
+            const donationText = document.getElementById('donation-text');
+            donationText.innerHTML = `$${donationAmount} / $100`;
+        }
+
+        // Example: update the donation progress to $25
+        updateDonationProgress(0);  // Change this value to simulate a donation
     </script>
 </body>
 </html>
