@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://cdn.discordapp.com/attachments/1294376691191386223/1343564794929741824/image.png?ex=67bdbbb9&is=67bc6a39&hm=3e5063f0f42deef1ea80cbfbc935688f05a4c2975401af066058f3dc11b8a8a2&') no-repeat center center fixed;
+            background: url('https://cdn.discordapp.com/attachments/1294379445234171955/1343592131436089354/wmremove-transformed.png?ex=67bdd52e&is=67bc83ae&hm=b7e659827c79c8e80b6649032c180b9b841ac6126a291d30043f547e87c5dd36&') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             flex-direction: column;
@@ -134,6 +134,26 @@
         .leaderboard-item span {
             font-weight: bold;
         }
+
+        /* Video Section */
+        .video-container {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .video-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -152,6 +172,15 @@
             <div id="donation-progress" class="donation-progress"></div>
         </div>
         <div id="donation-text" class="donation-goal-text">$0 / $100</div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        <div class="video-title">Look even Trump agrees!</div>
+        <video controls>
+            <source src="https://cdn.discordapp.com/attachments/1294379445234171955/1343590803775160482/79e80d76-bd38-4037-b8c3-35f776368c5b.mp4?ex=67bdd3f2&is=67bc8272&hm=c6ac57ad9e8c2557ca2f0f2465c1366384f27d139f55fa40322c9d0130a3f5bb&" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
     <!-- Donation Leaderboard -->
